@@ -24,7 +24,14 @@ data_iterator = iter(soup.find_all('tr'))
 
 #Creates data array using the parsed data
 for i in data_iterator:
-    data.append(i.text.replace('\n', ' ').split())
+    #Declares empty row array every loop.
+    row = []
+    #This loops adds all the data from a row to the row array
+    for j in i:
+        if j.text != '\n':
+            row.append(j.text)
+     #Appending row by row to the data array
+    data.append(row)
 print(data) 
 
 #Writes the data to the csv file
